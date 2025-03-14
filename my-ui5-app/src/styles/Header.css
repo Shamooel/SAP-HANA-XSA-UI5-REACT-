@@ -1,0 +1,265 @@
+/* ===== Base Styles & Variables ===== */
+.header {
+  --primary-color: var(--sapPrimary, #0a6ed1);
+  --primary-dark: var(--sapPrimaryDarkColor, #0854a0);
+  --primary-light: var(--sapPrimaryLightColor, #4db1ff);
+  --text-color: var(--sapTextColor, #32363a);
+  --text-secondary: var(--sapContent_LabelColor, #6a6d70);
+  --background-color: var(--sapBackgroundColor, #f7f7f7);
+  --card-background: var(--sapTile_Background, #ffffff);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 8px;
+  
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== ShellBar Styling ===== */
+.ui5-shellbar-root {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary-color)) !important;
+  border-bottom: none !important;
+  height: 3.5rem !important;
+}
+
+.ui5-shellbar-logo {
+  margin-left: 0.5rem !important;
+}
+
+.header-logo {
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
+.ui5-shellbar-menu-button {
+  color: white !important;
+}
+
+.ui5-shellbar-image {
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  transition: var(--transition-standard);
+}
+
+.ui5-shellbar-image:hover {
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  transform: scale(1.05);
+}
+
+.ui5-shellbar-coPilot {
+  color: white !important;
+}
+
+/* ===== ShellBar Items ===== */
+.ui5-shellbar-item {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: var(--transition-standard) !important;
+}
+
+.ui5-shellbar-item:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.active-nav-item {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  position: relative;
+}
+
+.active-nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px 3px 0 0;
+}
+
+/* ===== Notification Badge ===== */
+.ui5-shellbar-notification-counter {
+  background-color: #e9730c !important;
+  border: 2px solid var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) !important;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(233, 115, 12, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(233, 115, 12, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(233, 115, 12, 0);
+  }
+}
+
+/* ===== Mobile Menu ===== */
+.ui5-shellbar-overflow-container {
+  background-color: var(--card-background) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  overflow: hidden !important;
+}
+
+.ui5-responsive-popover-header {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.ui5-popover-root {
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--hover-shadow) !important;
+  overflow: hidden !important;
+  animation: fadeInDown 0.3s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ui5-list-root {
+  padding: 0.5rem 0 !important;
+}
+
+.ui5-li-root {
+  transition: var(--transition-standard) !important;
+}
+
+.ui5-li-root:hover {
+  background-color: rgba(10, 110, 209, 0.08) !important;
+}
+
+.active-list-item {
+  background-color: rgba(10, 110, 209, 0.12) !important;
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+/* ===== Notifications Popover ===== */
+.notification-unread {
+  position: relative;
+  font-weight: bold !important;
+  background-color: rgba(10, 110, 209, 0.05) !important;
+}
+
+.notification-unread::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.notification-read {
+  color: var(--text-secondary) !important;
+  padding-left: 1.5rem !important;
+}
+
+/* ===== User Menu ===== */
+.user-menu-header {
+  display: flex;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-menu-avatar {
+  margin-right: 1rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Footer Bar ===== */
+.ui5-bar-root {
+  background-color: transparent !important;
+  padding: 0.5rem !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 480px) {
+  .ui5-shellbar-root {
+    padding: 0 0.5rem !important;
+  }
+  
+  .ui5-shellbar-logo {
+    margin-left: 0 !important;
+  }
+  
+  .user-menu-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .user-menu-avatar {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ui5-shellbar-root {
+    padding: 0 1rem !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .ui5-shellbar-root {
+    padding: 0 1.5rem !important;
+  }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  .header {
+    position: static;
+    box-shadow: none;
+  }
+  
+  .ui5-shellbar-root {
+    background: white !important;
+    border-bottom: 1px solid #ddd !important;
+    height: auto !important;
+  }
+  
+  .header-logo {
+    filter: brightness(1) invert(0);
+  }
+  
+  
+  .ui5-shellbar-item,
+  .ui5-shellbar-notification-counter,
+  .ui5-shellbar-overflow-button {
+    display: none !important;
+  }
+}
