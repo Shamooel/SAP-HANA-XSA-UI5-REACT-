@@ -20,8 +20,7 @@ import "@ui5/webcomponents-icons/dist/resize.js"
 import "@ui5/webcomponents-icons/dist/accessibility.js"
 import "@ui5/webcomponents-icons/dist/connected.js"
 import "@ui5/webcomponents-icons/dist/arrow-right.js"
-import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js";
-
+import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js"
 
 import "../styles/Features.css"
 import config from "../config"
@@ -32,7 +31,6 @@ function Features() {
   const [loadingProgress, setLoadingProgress] = useState(0)
 
   useEffect(() => {
-    // Simulate API call to get features
     const fetchFeatures = async () => {
       setIsLoading(true)
 
@@ -49,13 +47,12 @@ function Features() {
       }, 100)
 
       try {
-        // Simulate network delay
         await new Promise((resolve) => setTimeout(resolve, 800))
 
-        // Add image URLs to the features from config
+        // Use actual image paths from config.js
         const featuresWithImages = config.features.map((feature) => ({
           ...feature,
-          imageUrl: `/placeholder.svg?height=200&width=300&text=${feature.title}`,
+          imageUrl: feature.image,
         }))
 
         setFeatures(featuresWithImages)
@@ -64,7 +61,7 @@ function Features() {
       } finally {
         clearInterval(interval)
         setLoadingProgress(100)
-        setTimeout(() => setIsLoading(false), 200) // Small delay for smooth transition
+        setTimeout(() => setIsLoading(false), 200)
       }
     }
 
@@ -100,7 +97,7 @@ function Features() {
             {features.map((feature, index) => (
               <Card key={feature.id} className={`feature-card feature-card-${index}`}>
                 <div className="feature-image-container">
-                  <img src={feature.imageUrl || "/placeholder.svg"} alt={feature.title} className="feature-image" />
+                  <img src={feature.imageUrl} alt={feature.title} className="feature-image" />
                   <div className="feature-icon-overlay">
                     <Icon name={feature.icon} className="feature-icon" />
                   </div>
@@ -122,4 +119,3 @@ function Features() {
 }
 
 export default Features
-

@@ -67,7 +67,7 @@ function AboutUs() {
           className="about-content"
         >
           <div className="about-image">
-            <img src="/placeholder.svg?height=300&width=500" alt="Company" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC7-RFA1xE4wTSP0DZJSJ1AJ8TitBYtkmEYA&s" alt="Company" />
           </div>
 
           <Panel headerText={aboutData?.title || "About Our Company"} className="about-panel">

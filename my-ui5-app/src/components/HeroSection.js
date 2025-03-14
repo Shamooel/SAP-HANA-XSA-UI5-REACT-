@@ -33,7 +33,7 @@ function HeroSection() {
           alignItems={FlexBoxAlignItems.Center}
           className="hero-flex"
         >
-          <Title level="h1">Transform Your Business with SAP UI5</Title>
+          <Title className="Title">Transform Your Business with SAP UI5  And Empower Innovation. See How. Join The SAP Revolution. See Cutting-edge Solutions To Achieve Operational Excellence. Intelligent enterprise.💫</Title>
           <Text className="hero-subtitle">
             Build enterprise-grade applications with the power of SAP UI5 and the flexibility of React
           </Text>

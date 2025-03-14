@@ -31,6 +31,7 @@ import HeroSection from "./HeroSection"
 import Features from "./Features"
 import "../styles/Home.css"
 
+
 function Home() {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
@@ -61,13 +62,13 @@ function Home() {
         })
 
         setTestimonials([
-          { id: 1, name: "Alice Johnson", company: "TechCorp", quote: "Fantastic service!", image: "/avatar1.png" },
+          { id: 1, name: "Yusha Ali", company: "TechCorp", quote: "Fantastic service!", image: "https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8" },
           {
             id: 2,
-            name: "Bob Williams",
+            name: "Hamna Ali",
             company: "BizInc",
             quote: "Really transformed our workflow.",
-            image: "/avatar2.png",
+            image: "https://wallpapers.com/images/hd/anime-hijab-drawing-nvuysmz0txskbxmn.jpg",
           },
         ])
       } catch (error) {
