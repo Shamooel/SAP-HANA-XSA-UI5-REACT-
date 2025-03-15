@@ -17,9 +17,6 @@ import {
 } from "@ui5/webcomponents-react"
 import { useMediaQuery } from "react-responsive"
 
-// Import search component
-import SearchComponent from "../components/SearchComponent"
-
 // Import icons
 import "@ui5/webcomponents-icons/dist/home.js"
 import "@ui5/webcomponents-icons/dist/menu.js"
@@ -28,14 +25,11 @@ import "@ui5/webcomponents-icons/dist/user-settings.js"
 import "@ui5/webcomponents-icons/dist/log.js"
 import "@ui5/webcomponents-icons/dist/search.js"
 import "@ui5/webcomponents-icons/dist/bell.js"
-import "@ui5/webcomponents-icons/dist/employee.js"; // Alternative for user
-import "@ui5/webcomponents-icons/dist/log.js"; // if "log-in.js" doesn't exist, try "log.js"
-
+import "@ui5/webcomponents-icons/dist/employee.js" 
 
 import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js"
 
 import "../styles/Header.css";
-
 import config from "../config"
 
 function Header({ onLoginClick, isLoggedIn, onLogout }) {
@@ -47,21 +41,16 @@ function Header({ onLoginClick, isLoggedIn, onLogout }) {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [userMenuAnchor, setUserMenuAnchor] = useState(null)
 
-  // Handle screen size responsiveness
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
-  const handleLogoClick = () => {
-    navigate("/")
-  }
+  const handleLogoClick = () => navigate("/")
 
   const handleMenuClick = (event) => {
     setMenuAnchor(event.target)
     setMenuOpen(true)
   }
 
-  const handleMenuClose = () => {
-    setMenuOpen(false)
-  }
+  const handleMenuClose = () => setMenuOpen(false)
 
   const handleMenuItemClick = (path) => {
     navigate(path)
@@ -73,9 +62,7 @@ function Header({ onLoginClick, isLoggedIn, onLogout }) {
     setUserMenuOpen(true)
   }
 
-  const handleUserMenuClose = () => {
-    setUserMenuOpen(false)
-  }
+  const handleUserMenuClose = () => setUserMenuOpen(false)
 
   const handleLogout = () => {
     onLogout()
@@ -99,16 +86,15 @@ function Header({ onLoginClick, isLoggedIn, onLogout }) {
         primaryTitle={config.appTitle}
         profile={
           isLoggedIn ? (
-            <Avatar onClick={handleUserMenuClick}>
-              <img src="https://i.pinimg.com/736x/fa/d5/e7/fad5e79954583ad50ccb3f16ee64f66d.jpg" alt="User" />
-            </Avatar>
+            <Avatar 
+              image="https://i.pinimg.com/736x/50/f4/fb/50f4fb7f863bfcfa8afcf424882d216c.jpg"
+              onClick={handleUserMenuClick}
+            />
           ) : (
-            <ShellBarItem icon="log-in" text="Login" onClick={onLoginClick} />
+            <ShellBarItem icon="log" text="Login" onClick={onLoginClick} />
           )
         }
-        searchField={showSearch && <SearchComponent />}
         showNotifications
-        notificationsCount={3}
       >
         {!isMobile && (
           <>
@@ -150,73 +136,43 @@ function Header({ onLoginClick, isLoggedIn, onLogout }) {
         {isMobile && <ShellBarItem icon="menu" onClick={handleMenuClick} />}
       </ShellBar>
 
-      {/* Mobile Navigation Menu */}
       {menuOpen && (
         <Popover open={menuOpen} opener={menuAnchor} onAfterClose={handleMenuClose} className="mobile-menu">
           <List>
-            <ListItemStandard
-              className={isActive("/") ? "active-list-item" : ""}
-              onClick={() => handleMenuItemClick("/")}
-            >
+            <ListItemStandard className={isActive("/") ? "active-list-item" : ""} onClick={() => handleMenuItemClick("/")}>
               Home
             </ListItemStandard>
-            <ListItemStandard
-              className={isActive("/about") ? "active-list-item" : ""}
-              onClick={() => handleMenuItemClick("/about")}
-            >
+            <ListItemStandard className={isActive("/about") ? "active-list-item" : ""} onClick={() => handleMenuItemClick("/about")}>
               About Us
             </ListItemStandard>
-            <ListItemStandard
-              className={isActive("/services") ? "active-list-item" : ""}
-              onClick={() => handleMenuItemClick("/services")}
-            >
+            <ListItemStandard className={isActive("/services") ? "active-list-item" : ""} onClick={() => handleMenuItemClick("/services")}>
               Services
             </ListItemStandard>
-            <ListItemStandard
-              className={isActive("/contact") ? "active-list-item" : ""}
-              onClick={() => handleMenuItemClick("/contact")}
-            >
+            <ListItemStandard className={isActive("/contact") ? "active-list-item" : ""} onClick={() => handleMenuItemClick("/contact")}>
               Contact
             </ListItemStandard>
-            <ListItemStandard
-              className={isActive("/demo") ? "active-list-item" : ""}
-              onClick={() => handleMenuItemClick("/demo")}
-            >
+            <ListItemStandard className={isActive("/demo") ? "active-list-item" : ""} onClick={() => handleMenuItemClick("/demo")}>
               Request Demo
             </ListItemStandard>
             {isLoggedIn && (
-              <ListItemStandard
-                className={isActive("/dashboard") ? "active-list-item" : ""}
-                onClick={() => handleMenuItemClick("/dashboard")}
-              >
+              <ListItemStandard className={isActive("/dashboard") ? "active-list-item" : ""} onClick={() => handleMenuItemClick("/dashboard")}>
                 Dashboard
               </ListItemStandard>
             )}
             {isLoggedIn ? (
-              <ListItemStandard icon="log" onClick={handleLogout}>
-                Logout
-              </ListItemStandard>
+              <ListItemStandard icon="log" onClick={handleLogout}> Logout </ListItemStandard>
             ) : (
-              <ListItemStandard icon="log-in" onClick={onLoginClick}>
-                Login
-              </ListItemStandard>
+              <ListItemStandard icon="log" onClick={onLoginClick}> Login </ListItemStandard>
             )}
           </List>
         </Popover>
       )}
 
-      {/* User Menu Popover */}
       {userMenuOpen && (
         <Popover open={userMenuOpen} opener={userMenuAnchor} onAfterClose={handleUserMenuClose} className="user-menu">
           <div className="user-menu-header">
-            <Avatar className="user-menu-avatar">
-              <img src="https://i.pinimg.com/736x/fa/d5/e7/fad5e79954583ad50ccb3f16ee64f66d.jpg" alt="User" />
-            </Avatar>
-            <FlexBox
-              direction={FlexBoxDirection.Column}
-              justifyContent={FlexBoxJustifyContent.Center}
-              alignItems={FlexBoxAlignItems.Start}
-            >
+            <Avatar className="user-menu-avatar" image="https://i.pinimg.com/736x/fa/d5/e7/fad5e79954583ad50ccb3f16ee64f66d.jpg" />
+            <FlexBox direction={FlexBoxDirection.Column} justifyContent={FlexBoxJustifyContent.Center} alignItems={FlexBoxAlignItems.Start}>
               <Title>John Doe</Title>
               <span className="user-email">john.doe@example.com</span>
             </FlexBox>
@@ -224,18 +180,10 @@ function Header({ onLoginClick, isLoggedIn, onLogout }) {
           <List>
             <ListItemStandard icon="user-settings">Profile Settings</ListItemStandard>
             <ListItemStandard icon="settings">Preferences</ListItemStandard>
-            <ListItemStandard
-              icon="desktop-mobile"
-              onClick={() => {
-                navigate("/dashboard")
-                handleUserMenuClose()
-              }}
-            >
+            <ListItemStandard icon="desktop-mobile" onClick={() => { navigate("/dashboard"); handleUserMenuClose(); }}>
               Dashboard
             </ListItemStandard>
-            <ListItemStandard icon="log" onClick={handleLogout}>
-              Logout
-            </ListItemStandard>
+            <ListItemStandard icon="log" onClick={handleLogout}> Logout </ListItemStandard>
           </List>
         </Popover>
       )}
@@ -244,4 +192,3 @@ function Header({ onLoginClick, isLoggedIn, onLogout }) {
 }
 
 export default Header
-

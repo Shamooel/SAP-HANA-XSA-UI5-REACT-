@@ -1,3 +1,4 @@
+/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -18,14 +19,18 @@
   filter: brightness(1.1);
 }
 
-/* ShellBar Styling */
+/* ShellBar */
 .ui5-shellbar-root {
   background: linear-gradient(90deg, var(--sapPrimaryDarkColor, #0854a0), var(--sapPrimary, #0a6ed1)) !important;
   border-bottom: none !important;
   height: 3.5rem !important;
+  padding: 0 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
 }
 
-/* Navigation Items */
+/* Navigation */
 .active-nav-item {
   background-color: rgba(255, 255, 255, 0.15) !important;
   color: white !important;
@@ -54,7 +59,7 @@
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* User Avatar */
+/* Avatar */
 .ui5-avatar-root {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -66,7 +71,7 @@
   border-color: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Notification Badge */
+/* Notification */
 .ui5-shellbar-notification-counter {
   background-color: #e9730c !important;
   border: 2px solid var(--sapPrimary, #0a6ed1) !important;
@@ -140,7 +145,7 @@
   }
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 480px) {
   .ui5-shellbar-root {
     padding: 0 0.5rem !important;
@@ -198,4 +203,3 @@
     display: none !important;
   }
 }
-
