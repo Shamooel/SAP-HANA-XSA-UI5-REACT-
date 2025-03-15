@@ -30,6 +30,7 @@ import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js";
 import HeroSection from "./HeroSection"
 import Features from "./Features"
 import "../styles/Home.css"
+import "../components/Header.js"
 
 
 function Home() {

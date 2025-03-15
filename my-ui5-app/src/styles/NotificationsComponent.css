@@ -1,0 +1,159 @@
+.notifications-container {
+    position: relative;
+  }
+  
+  .notifications-trigger {
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .notifications-trigger:hover {
+    background-color: var(--sapButton_Hover_Background);
+  }
+  
+  .notifications-icon {
+    font-size: 1.25rem;
+    color: var(--sapButton_TextColor);
+  }
+  
+  .notifications-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--sapErrorBackground) !important;
+    color: var(--sapErrorColor) !important;
+    border-radius: 12px !important;
+    padding: 2px 6px !important;
+    font-size: 0.75rem !important;
+    min-width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    animation: bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .notifications-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 360px;
+    max-height: 480px;
+    border-radius: 8px !important;
+    box-shadow: var(--sapContent_Shadow2) !important;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+  }
+  
+  .notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--sapList_BorderColor);
+  }
+  
+  .notifications-header .ui5-title-root {
+    font-size: 1.25rem !important;
+    margin: 0 !important;
+  }
+  
+  .notifications-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .notification-item {
+    padding: 16px !important;
+    border-bottom: 1px solid var(--sapList_BorderColor) !important;
+    transition: background-color 0.2s ease !important;
+  }
+  
+  .notification-item:hover {
+    background-color: var(--sapList_Hover_Background) !important;
+  }
+  
+  .notification-item.unread {
+    background-color: var(--sapList_SelectionBackgroundColor) !important;
+  }
+  
+  .notification-content {
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .notification-header .ui5-title-root {
+    font-size: 1rem !important;
+    margin: 0 !important;
+    flex: 1;
+  }
+  
+  .notification-time {
+    font-size: 0.875rem !important;
+    color: var(--sapContent_LabelColor) !important;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+  
+  .notification-message {
+    color: var(--sapContent_LabelColor) !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .no-notifications {
+    padding: 32px;
+    text-align: center;
+    color: var(--sapContent_LabelColor);
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .notifications-panel {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      max-height: none;
+      border-radius: 0;
+    }
+  
+    .notifications-list {
+      max-height: none;
+    }
+  }
+  
+  
