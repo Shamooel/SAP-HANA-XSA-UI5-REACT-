@@ -1,0 +1,119 @@
+.demo-page {
+  padding: 2rem 1rem;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.demo-subtitle {
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+.demo-container {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.demo-form-card,
+.success-card {
+  padding: 2rem;
+}
+
+.demo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  width: 100%;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.form-group.half {
+  flex: 1;
+  min-width: 250px;
+}
+
+.interests-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.terms {
+  margin-top: 1rem;
+}
+
+.submit-button {
+  align-self: flex-start;
+  min-width: 150px;
+  margin-top: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.fallback-button {
+  font-size: 0.8rem;
+}
+
+.error-message {
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 300px;
+  gap: 2rem;
+}
+
+.new-request-btn {
+  margin-top: 1rem;
+}
+
+.demo-features {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.features-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.features-container {
+  gap: 1.5rem;
+}
+
+.feature-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.feature-card h3 {
+  margin-bottom: 1rem;
+}
+
