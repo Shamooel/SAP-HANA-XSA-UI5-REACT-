@@ -1,62 +1,126 @@
-const express = require("express")
-const cors = require("cors")
-const path = require("path")
-const dashboardRoutes = require("./routes/dashboardRoutes")
-const testimonialRoutes = require("./routes/testimonialRoutes")
-const contactRoutes = require("./routes/contactRoutes")
-const demoRoutes = require("./routes/demoRoutes")
+"use client"
 
-// Initialize express app
-const app = express()
+import { useState, useEffect } from "react"
+import {
+  Title,
+  Text,
+  FlexBox,
+  FlexBoxDirection,
+  FlexBoxJustifyContent,
+  FlexBoxAlignItems,
+  Card,
+  Icon,
+  List,
+  ListItemStandard,
+  IllustratedMessage,
+  ProgressIndicator,
+} from "@ui5/webcomponents-react"
+import "@ui5/webcomponents-icons/dist/wrench.js"
+import "@ui5/webcomponents-icons/dist/database.js"
+import "@ui5/webcomponents-icons/dist/cloud.js"
+import "@ui5/webcomponents-icons/dist/shield.js"
+import "@ui5/webcomponents-icons/dist/education.js"
+import "@ui5/webcomponents-icons/dist/headset.js"
+import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js"
 
-// Middleware
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+import "../styles/Services.css"
 
-// Log all incoming requests
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`)
-  if (req.method === "POST") {
-    console.log("Request body:", JSON.stringify(req.body, null, 2))
-  }
-  next()
-})
+// Import API service
+import { fetchServices } from "../services/apiService"
 
-// API Routes
-app.use("/api/dashboard", dashboardRoutes)
-app.use("/api/testimonials", testimonialRoutes)
-app.use("/api/contact", contactRoutes)
-app.use("/api/demo", demoRoutes)
+function Services() {
+  const [services, setServices] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-// Test route to verify server is running
-app.get("/api/test", (req, res) => {
-  res.json({ message: "API server is running" })
-})
+  useEffect(() => {
+    const getServices = async () => {
+      try {
+        setIsLoading(true)
+        setError(null)
 
-// Serve static files from the frontend build directory in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")))
+        // Fetch services from backend
+        const response = await fetchServices()
+        setServices(response.services)
+      } catch (error) {
+        console.error("Error fetching services:", error)
+        setError("Failed to load services. Please try again later.")
+        setServices([])
+      } finally {
+        setIsLoading(false)
+      }
+    }
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"))
-  })
+    getServices()
+  }, [])
+
+  return (
+    <div className="services-page">
+      <div className="services-header">
+        <Title level="H1">Our Services</Title>
+        <Text className="services-subtitle">
+          We offer a comprehensive range of SAP UI5 and Fiori services to help your business thrive in the digital era.
+        </Text>
+      </div>
+
+      {isLoading ? (
+        <div className="loading-container">
+          <ProgressIndicator value={70} />
+          <Text>Loading services...</Text>
+        </div>
+      ) : error ? (
+        <div className="error-container">
+          <IllustratedMessage name="NoData" titleText="Could not load services" subtitleText={error} />
+        </div>
+      ) : (
+        <div className="services-container">
+          <FlexBox
+            direction={FlexBoxDirection.Row}
+            justifyContent={FlexBoxJustifyContent.Center}
+            alignItems={FlexBoxAlignItems.Stretch}
+            wrap="Wrap"
+            className="services-grid"
+          >
+            {services.map((service) => (
+              <Card key={service.id} className="service-card">
+                <div className="service-icon-container">
+                  <Icon name={service.icon} className="service-icon" />
+                </div>
+                <Title level="H2" className="service-title">
+                  {service.title}
+                </Title>
+                <Text className="service-description">{service.description}</Text>
+                <List className="service-features">
+                  {service.features.map((feature, index) => (
+                    <ListItemStandard key={index}>{feature}</ListItemStandard>
+                  ))}
+                </List>
+              </Card>
+            ))}
+          </FlexBox>
+        </div>
+      )}
+
+      <div className="services-cta">
+        <Card className="cta-card">
+          <Title level="H2">Need a Custom Solution?</Title>
+          <Text>
+            Our team of experts can develop tailored solutions to address your specific business challenges. Contact us
+            today to discuss your requirements.
+          </Text>
+          <div className="cta-buttons">
+            <a href="/contact" className="ui5-button-primary">
+              Contact Us
+            </a>
+            <a href="/demo" className="ui5-button-secondary">
+              Request Demo
+            </a>
+          </div>
+        </Card>
+      </div>
+    </div>
+  )
 }
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error("Server error:", err)
-  res.status(500).json({
-    success: false,
-    message: "Internal server error",
-    error: process.env.NODE_ENV === "production" ? null : err.message,
-  })
-})
-
-// Start the server
-const PORT = process.env.PORT || 5000
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-  console.log(`API available at http://localhost:${PORT}/api`)
-})
+export default Services
 

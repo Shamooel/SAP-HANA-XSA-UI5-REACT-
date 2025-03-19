@@ -67,37 +67,13 @@ function Home() {
         console.error("Error fetching data:", error)
         setError("Failed to load dashboard data. Please try again later.")
 
-        // Fallback to mock data if API fails
+        // Set empty data
         setDashboardData({
-          stats: [
-            { id: 1, title: "Active Users", value: 1254, icon: "customer", trend: "up", percentage: 12 },
-            { id: 2, title: "Products", value: 87, icon: "product", trend: "up", percentage: 5 },
-            { id: 3, title: "Orders", value: 342, icon: "sales-order", trend: "down", percentage: 3 },
-          ],
-          recentActivity: [
-            { id: 1, user: "John Doe", action: "Created a new project", time: "10 minutes ago" },
-            { id: 2, user: "Jane Smith", action: "Updated product catalog", time: "1 hour ago" },
-            { id: 3, user: "Mike Johnson", action: "Completed order #12345", time: "3 hours ago" },
-          ],
+          stats: [],
+          recentActivity: [],
         })
 
-        setTestimonials([
-          {
-            id: 1,
-            name: "Yusha Ali",
-            company: "TechCorp",
-            quote: "Fantastic service!",
-            image:
-              "https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8",
-          },
-          {
-            id: 2,
-            name: "Hamna Ali",
-            company: "BizInc",
-            quote: "Really transformed our workflow.",
-            image: "https://wallpapers.com/images/hd/anime-hijab-drawing-nvuysmz0txskbxmn.jpg",
-          },
-        ])
+        setTestimonials([])
       } finally {
         setIsLoading(false)
       }

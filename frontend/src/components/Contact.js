@@ -60,9 +60,6 @@ function Contact() {
     }
 
     try {
-      // For debugging - log the API URL
-      console.log("Submitting to API:", process.env.REACT_APP_API_URL || "http://localhost:5000/api")
-
       // Submit form data to backend API
       const response = await submitContactForm(formData)
       console.log("API Response:", response)
@@ -85,17 +82,13 @@ function Contact() {
 
       // Detailed error logging
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         console.error("Error response data:", error.response.data)
         console.error("Error response status:", error.response.status)
         setErrorMessage(error.response.data?.message || "Server error. Please try again later.")
       } else if (error.request) {
-        // The request was made but no response was received
         console.error("No response received:", error.request)
         setErrorMessage("No response from server. Please check your connection.")
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.error("Error message:", error.message)
         setErrorMessage("An error occurred. Please try again later.")
       }
@@ -103,23 +96,6 @@ function Contact() {
       setIsSubmitting(false)
     }
   }
-
-  // Fallback submission for testing when backend is not available
-  // const handleFallbackSubmit = () => {
-  //   setIsSubmitting(true)
-
-  //   // Simulate API call
-  //   setTimeout(() => {
-  //     setSubmitSuccess(true)
-  //     setFormData({
-  //       name: "",
-  //       email: "",
-  //       subject: "",
-  //       message: "",
-  //     })
-  //     setIsSubmitting(false)
-  //   }, 1500)
-  // }
 
   return (
     <div className="contact-page">

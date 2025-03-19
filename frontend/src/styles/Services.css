@@ -1,120 +1,135 @@
-/* ===== Base Styles & Variables ===== */
-:root {
-    --primary-color: var(--sapPrimary, #0a6ed1);
-    --primary-dark: var(--sapPrimaryDarkColor, #0854a0);
-    --primary-light: var(--sapPrimaryLightColor, #4db1ff);
-    --accent-color: var(--sapAccentColor, #f27935);
-    --text-color: var(--sapTextColor, #32363a);
-    --text-secondary: var(--sapContent_LabelColor, #6a6d70);
-    --background-color: var(--sapBackgroundColor, #f7f7f7);
-    --card-background: var(--sapTile_Background, #ffffff);
-    --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    --hover-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    --border-radius: 8px;
-    --transition-standard: all 0.3s ease-in-out;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-}
-
-/* ===== Header Section ===== */
-.services-header {
-    padding: 3rem 2rem;
+.services-page {
+    padding: 2rem 1rem;
+  }
+  
+  .services-header {
     text-align: center;
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    color: white;
-    position: relative;
     margin-bottom: 3rem;
-}
-
-.services-header .ui5-title-root {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: bold;
-}
-
-/* ===== Services Grid ===== */
-.services-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.service-card {
-    background: var(--card-background);
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    padding: 2rem;
-    text-align: center;
-    width: calc(33.333% - 2rem);
-    transition: var(--transition-standard);
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--hover-shadow);
-}
-
-.service-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 1rem 0;
-}
-
-.service-description {
-    font-size: 1rem;
-    color: var(--text-secondary);
-}
-
-/* ===== CTA Section ===== */
-.services-cta {
-    text-align: center;
-    margin: 3rem auto;
-    padding: 2rem;
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+  }
+  
+  .services-subtitle {
     max-width: 800px;
-}
-
-.cta-button {
-    background-color: white;
-    color: var(--primary-color);
+    margin: 1rem auto;
+  }
+  
+  .loading-container,
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 1rem;
+  }
+  
+  .services-container {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+  
+  .services-grid {
+    gap: 2rem;
+  }
+  
+  .service-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 380px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-icon-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--sapContent_Illustrative_Color1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-icon {
+    font-size: 2.5rem;
+    color: white;
+  }
+  
+  .service-title {
+    margin-bottom: 1rem;
+  }
+  
+  .service-description {
+    margin-bottom: 1.5rem;
+    color: var(--sapContent_LabelColor);
+  }
+  
+  .service-features {
+    width: 100%;
+    margin-top: auto;
+  }
+  
+  .services-cta {
+    max-width: 800px;
+    margin: 3rem auto;
+  }
+  
+  .cta-card {
+    padding: 2.5rem;
+    text-align: center;
+    background-color: var(--sapContent_Illustrative_Color5);
+    color: white;
+  }
+  
+  .cta-card h2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .ui5-button-primary,
+  .ui5-button-secondary {
+    display: inline-block;
     padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: var(--transition-standard);
-}
-
-.cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: var(--hover-shadow);
-}
-
-/* ===== Responsive Design ===== */
-@media (max-width: 1024px) {
-    .service-card {
-        width: calc(50% - 2rem);
-    }
-}
-
-@media (max-width: 768px) {
-    .services-header {
-        padding: 2rem 1rem;
-    }
-    .service-card {
-        width: 100%;
-    }
-    .cta-button {
-        width: 100%;
-    }
-}
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ui5-button-primary {
+    background-color: white;
+    color: var(--sapContent_Illustrative_Color5);
+  }
+  
+  .ui5-button-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  
+  .ui5-button-primary:hover {
+    background-color: var(--sapContent_Illustrative_Color1);
+    color: white;
+  }
+  
+  .ui5-button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  

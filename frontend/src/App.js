@@ -13,7 +13,6 @@ import Contact from "./components/Contact"
 import Services from "./components/Services"
 import Demo from "./components/Demo"
 
-
 // Styles
 import "./styles/App.css"
 
@@ -87,11 +86,10 @@ function App() {
           )}
         </main>
         <Footer />
-
-       
       </div>
     </ThemeProvider>
   )
 }
 
 export default App
+

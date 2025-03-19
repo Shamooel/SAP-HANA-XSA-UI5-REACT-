@@ -1,0 +1,26 @@
+.not-found-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .not-found-content {
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .not-found-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    .not-found-actions {
+      flex-direction: column;
+    }
+  }
+  
+  
